@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="./vue.js"></script>
+    <script src="./购物车.js" defer></script>
+    <link rel="stylesheet" href="./购物车.css">
+</head>
+
+<body>
+    <div id="app">
+        <template v-if='list.length'>
+            <table>
+                <thead>
+                    <tr>
+                        <th>category </th>
+                        <th>id </th>
+                        <th>name </th>
+                        <th>price </th>
+                        <th>count </th>
+                        <th>check </th>
+                        <th>operation </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <template v-for="(item,index) in list">
+                        <tr v-for="(curItem,curIndex) in item">
+                            <td v-if="curIndex==0" :rowspan="item.length">{{curItem.category}}</td>
+                            <td>{{curIndex+1}}</td>
+                            <td>{{curItem.name}}</td>
+                            <td>{{curItem.price}}</td>
+                            <td>
+                                <button @click="handleReduce(index,curIndex)" :disabled="this.count===1">-1</button>
+                                {{curItem.count}}
+                                <button @click="handleAdd(index,curIndex)">+1 </button></td>
+                            <td>
+                                <input type="checkbox" :checked="curItem.chk" @change="changeChk(index,curIndex)">
+                            </td>
+                            <td>
+                                <button @click="handleRemove(index,curIndex)">删除</button>
+                            </td>
+                        </tr>
+                    </template>
+                </tbody>
+                <tfoot>
+                    <tr>
+                        <td colspan="7">
+                            <button @click="chkAll">{{chkText}}</button>
+                        </td>
+                    </tr>
+                </tfoot>
+            </table>
+            <div>总价：{{totalPrice}}</div>
+        </template>
+        <div v-else>购物车为空 </div>
+    </div>
+</body>
+
+</html>
