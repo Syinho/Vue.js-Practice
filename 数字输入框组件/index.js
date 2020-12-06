@@ -1,8 +1,8 @@
 var app = new Vue({
-    el: '#app',
+    id: '#app',
     data: {
-        value: 10,
-        max: 20,
-        min: 0
+        value: 5,
+        min: 0,
+        max: 20
     }
-});
+})

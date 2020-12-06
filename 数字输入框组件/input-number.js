@@ -1,42 +1,52 @@
+// 改写1：当输入框聚焦时，增加对键盘上下键的支持
+// 改写2：增加一个控制步伐的prop-step，比如设置为10，点击加号按钮，一次增加10
+
 Vue.component('input-number', {
     props: {
         value: {
-            type: Number,
-            default: 0
+            type: Number
         },
         max: {
             type: Number,
-            default: Infinity
+            dafault: Infinity
         },
         min: {
             type: Number,
             default: -Infinity
+        },
+        propStep: {
+            type: Number,
+            default: 1
         }
     },
     template: `
     <div class="container">
         <div class="input-group mb-3">
             <div class="input-group-prepend">
-                <span class="input-group-text">NUM:</span>
+                <span class="input-group-text">NUMBER:</span>
             </div>
-            <input type="text" class="form-control" :value="currentValue" @change="handleChange">
+            <input type="text" class="form-control" :value="currentValue" @change="handleChange" @keyup.up="handleUp" @keyup.down="handleDown">
+            <input type="text" class="form-control" :value="step" @change="stepChange">
         </div>
-        <button class="btn btn-danger col-3" :disabled="currentValue>=max" @click="handleUp">+</button>
-        <button class="btn btn-primary col-3" :disabled="currentValue<=min" @click="handleDown">-</button>
-    </div>`,
+        
+        <button class="btn btn-danger col-3" @click="handleUp" :disabled="currentValue>=max">+</button>
+        <button class="btn btn-primary col-3" @click="handleDown" :disabled="currentValue<=min">-</button>
+    </div>
+    `,
     data() {
         return {
-            currentValue: this.value
+            currentValue: this.value,
+            step: this.propStep
         }
     },
     methods: {
         handleUp() {
             if (this.currentValue >= this.max) return;
-            this.currentValue++;
+            this.currentValue += this.step;
         },
         handleDown() {
             if (this.currentValue <= this.min) return;
-            this.currentValue--;
+            this.currentValue -= this.step;
         },
         isNum(val) {
             return /(-|\+)?((\b0\b)|([1-9]{1}\d*))(\.\d*[1-9]{1})?/.test(val + '');
@@ -44,29 +54,31 @@ Vue.component('input-number', {
         handleChange(ev) {
             var val = ev.target.value;
             if (this.isNum(val)) {
-                val = Number(val);
-                if (val <= this.min) {
-                    this.currentValue = this.min;
-                } else if (val >= this.max) {
-                    this.currentValue = this.max;
-                } else {
-                    this.currentValue = val;
-                }
+                this.currentValue = Number(val);
+                if (val <= this.min) this.currentValue = this.min;
+                if (val >= this.max) this.currentValue = this.max;
             } else {
                 ev.target.value = this.currentValue;
+            }
+        },
+        stepChange(ev) {
+            var val = ev.target.value;
+            if (this.isNum(val)) {
+                this.step = Number(val);
+            } else {
+                ev.target.value = this.step;
             }
         }
     },
     watch: {
-        value(newVal) {
-            if (this.isNum(newVal)) {
-                if (newVal >= this.max) this.currentValue = this.max;
-                if (newVal <= this.min) this.currentValue = this.min;
-                this.currentValue = newVal;
-            }
+        value: function (newVal) {
+            this.currentValue = newVal;
+            if (newVal >= this.max) this.currentValue = this.max;
+            if (newVal <= this.min) this.currentValue = this.min;
         },
-        currentValue(newVal) {
+        currentValue: function (newVal) {
+            // 通过handleChange进行改写
             this.$emit('input', newVal);
         }
     }
-});
+})
