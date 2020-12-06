@@ -1,8 +1,14 @@
 var app = new Vue({
-    id: '#app',
+    el: '#app',
     data: {
         value: 5,
+        max: 20,
         min: 0,
-        max: 20
+        propStep: 2
+    },
+    watch: {
+        value: function () {
+            console.log(`根文件的value值被改写：${this.value}`);
+        }
     }
-})
+});
