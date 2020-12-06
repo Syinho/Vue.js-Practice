@@ -49,10 +49,10 @@ Vue.component('input-number', {
             this.currentValue -= this.step;
         },
         isNum(val) {
-            return /(-|\+)?((\b0\b)|([1-9]{1}\d*))(\.\d*[1-9]{1})?/.test(val + '');
+            return /^\s*(-|\+)?((\b0\b)|([1-9]{1}\d*))(\.\d*[1-9]{1})?\s*$/.test(val + '');
         },
         handleChange(ev) {
-            var val = ev.target.value;
+            var val = ev.target.value.trim();
             if (this.isNum(val)) {
                 this.currentValue = Number(val);
                 if (val <= this.min) this.currentValue = this.min;
@@ -62,7 +62,7 @@ Vue.component('input-number', {
             }
         },
         stepChange(ev) {
-            var val = ev.target.value;
+            var val = ev.target.value.trim();
             if (this.isNum(val)) {
                 this.step = Number(val);
             } else {
@@ -75,6 +75,10 @@ Vue.component('input-number', {
             this.currentValue = newVal;
             if (newVal >= this.max) this.currentValue = this.max;
             if (newVal <= this.min) this.currentValue = this.min;
+        },
+        propStep: function (newVal) {
+            if (isNum(newVal)) this.step = newVal;
+            if (!isNum(newVal)) this.step = 1;
         },
         currentValue: function (newVal) {
             // 通过handleChange进行改写
