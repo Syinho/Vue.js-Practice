@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="../vue.js"></script>
+    <link rel="stylesheet" href="./main.css">
+</head>
+
+<body>
+    <div id="app">
+        <tabs v-model="activeKey">
+            <pane title="大雄" code="0">
+                <img src="../img/哆啦A梦人物组图/大雄.jpg">
+            </pane>
+            <pane title="静香" code="1">
+                <img src="../img/哆啦A梦人物组图/静香.jpg" alt="">
+            </pane>
+            <pane title="哆啦A梦" code="2">
+                <img src="../img/哆啦A梦人物组图/哆啦A梦.jpg" alt="">
+            </pane>
+            <pane title="小夫" code="3">
+                <img src="../img/哆啦A梦人物组图/小夫.jpg" alt="">
+            </pane>
+            <pane title="胖虎" code="4">
+                <img src="../img/哆啦A梦人物组图/胖虎.jpg" alt="">
+            </pane>
+        </tabs>
+    </div>
+    <script src="./tab.js"></script>
+    <script src="./pane.js"></script>
+    <script>
+        var app = new Vue({
+            el: '#app',
+            data: {
+                activeKey: 0
+            }
+        })
+    </script>
+</body>
+
+</html>

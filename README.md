@@ -20,3 +20,7 @@
 - 增加对输入框加减幅度的控制
 
 [预览地址](https://syinho.github.io/Vue.js-Practice/%E6%95%B0%E5%AD%97%E8%BE%93%E5%85%A5%E6%A1%86%E7%BB%84%E4%BB%B6/index.html)
+
+### 标签页练习
+- 一个《哆啦A梦》的人物形象查看页
+[预览地址]()
