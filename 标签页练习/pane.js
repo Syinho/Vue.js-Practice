@@ -3,19 +3,23 @@ Vue.component('pane', {
     template: `
     <div class="pane" v-show="show">
         <slot></slot>
-    </div>
-    `,
-    props: {
-        title: {
-            type: String
-        },
-        code: {
-            type: [String, Number]
-        }
-    },
+    </div>`,
     data() {
         return {
-            show: true
+            show: false
+        }
+    },
+    props: {
+        label: {
+            type: String,
+            default: ''
+        },
+        name: {
+            type: [String, Number]
+        },
+        closable: {
+            type: Boolean,
+            default: false
         }
     },
     methods: {
@@ -23,12 +27,16 @@ Vue.component('pane', {
             this.$parent.updateNav();
         }
     },
-    watch: {
-        title(newVal) {
-            this.updateNav();
-        }
-    },
-    mounted() {
+    created() {
         this.updateNav();
+    },
+    watch: {
+        label(newVal) {
+            this.updateNav();
+        },
+        closable(newVal) {
+            this.updateNav();
+            console.log(`closable被修改触发watch,当前值${this.closable}`);
+        }
     }
 })
