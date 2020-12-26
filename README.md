@@ -25,5 +25,7 @@
 - 一个《哆啦A梦》的人物形象查看页
 ******
 - 添加一个可以在入口页写入的closable属性，增加对pane组件的删除功能。closable接收的是一个布尔值，所以需要使用v-bind进行传值，否则传入值会被视为字符串
+*****
+- 尝试在切换pane的显示与隐藏时，使用滑动的动画
 
 [预览地址](https://syinho.github.io/Vue.js-Practice/%E6%A0%87%E7%AD%BE%E9%A1%B5%E7%BB%83%E4%B9%A0/index.html)
