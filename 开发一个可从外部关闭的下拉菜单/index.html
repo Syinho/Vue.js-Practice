@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="../vue.js"></script>
+    <script src="../vue-router.js"></script>
+    <link rel="stylesheet" href="./style.css">
+</head>
+
+<body>
+    <div id="app" v-cloak>
+        <div class="main" v-clickoutside="handleSwitch">
+            <button class="btn" @click="show=!show">点击显示/隐藏菜单</button>
+            <ul class="dropdown" v-show="show">
+                <li>子选项1</li>
+                <li>子选项2</li>
+                <li>子选项3</li>
+                <li>子选项4</li>
+                <li>子选项5</li>
+            </ul>
+        </div>
+    </div>
+    <script src="./clickoutside.js"></script>
+    <script>
+        let app = new Vue({
+            el: '#app',
+            data: {
+                show: false
+            },
+            methods: {
+                handleSwitch() {
+                    this.show = false;
+                }
+            }
+        })
+    </script>
+</body>
+
+</html>

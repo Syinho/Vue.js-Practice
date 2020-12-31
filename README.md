@@ -29,3 +29,7 @@
 - 尝试在切换pane的显示与隐藏时，使用滑动的动画
 
 [预览地址](https://syinho.github.io/Vue.js-Practice/%E6%A0%87%E7%AD%BE%E9%A1%B5%E7%BB%83%E4%B9%A0/index.html)
+
+### 指令练习————开发一个点击外部区域可以令其隐藏的下拉菜单
+
+[预览地址](https://syinho.github.io/Vue.js-Practice/开发一个可从外部关闭的下拉菜单/index.html)
