@@ -12,7 +12,7 @@
 
 <body>
     <div id="app" v-cloak>
-        <div class="main" v-clickoutside="handleSwitch">
+        <div class="main" v-clickoutside.esc="handleSwitch">
             <button class="btn" @click="show=!show">点击显示/隐藏菜单</button>
             <ul class="dropdown" v-show="show">
                 <li>子选项1</li>
