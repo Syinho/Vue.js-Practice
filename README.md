@@ -33,3 +33,7 @@
 ### 指令练习————开发一个点击外部区域可以令其隐藏的下拉菜单
 
 [预览地址](https://syinho.github.io/Vue.js-Practice/开发一个可从外部关闭的下拉菜单/index.html)
+*****
+- 扩展clickoutside.js，实现在点击按钮显示下拉菜单后，通过按下键盘的ESC键也可以关闭下拉菜单
+- 按下键盘触发`keydown`事件，若是一直按着会不停触发，通过防抖来处理(或者直接监听`keyup`事件？)。通过`e.keyCode`来判断是否是`ESC`,如果是的话就调用`binding.value`的值，即指令绑定的函数
+*****
