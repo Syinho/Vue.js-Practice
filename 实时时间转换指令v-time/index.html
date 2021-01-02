@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="../vue.js"></script>
+    <script src="../vue-router.js"></script>
+</head>
+
+<body>
+    <div id="app">
+        <div v-time="timeNow"></div>
+        <div v-time="timeBefore"></div>
+    </div>
+    <script src="./time.js"></script>
+    <script>
+        var app = new Vue({
+            el: "#app",
+            data: {
+                timeNow: (new Date()).getTime(),
+                timeBefore: Date.UTC(2020, 11, 1, 12, 0, 0)
+                // timeBefore表示 2020年12月1日 12点的毫秒数
+            },
+            methods: {},
+            filters: {},
+            directives: {},
+            components: {},
+            watch: {},
+            computed: {}
+        });
+    </script>
+</body>
+
+</html>
