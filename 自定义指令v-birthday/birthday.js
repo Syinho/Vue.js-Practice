@@ -6,7 +6,7 @@ function getTime(y, m, d) {
         },
         // 获取出生日期的时间戳
         getBir: function () {
-            return Date.UTC(`${y}`, `${m}`, `${d}`)
+            return Date.UTC(`${y}`, `${m-1}`, `${d}`)
         },
         // 获取转换时间的时间戳
         dateFormat: function () {
@@ -26,7 +26,6 @@ Vue.directive('birthday', {
             y = RegExp.$1;
             m = RegExp.$2;
             d = RegExp.$3;
-            console.log(`y:${y},m:${m},d:${d}`);
         }
         el.__getTime__ = getTime;
         el.innerText = el.__getTime__(y, m, d);
@@ -39,9 +38,10 @@ Vue.directive('birthday', {
             y = RegExp.$1;
             m = RegExp.$2;
             d = RegExp.$3;
-            console.log(`y:${y},m:${m},d:${d}`);
+        } else {
+            console.log('传入字符串不符合格式');
+            return;
         }
-        console.log(`update钩子函数调用`);
         el.innerText = el.__getTime__(y, m, d);
     },
     unbind: function (el, binding) {
