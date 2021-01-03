@@ -43,8 +43,9 @@
   - 思路：指令钩子函数中的`binding`参数的`modifiers`属性可以获取指令修饰符对象，返回的是一个修饰符对象
 *****
 ### 实时时间转换指令
-[预览地址]((https://syinho.github.io/Vue.js-Practice/实时时间转换指令v-time/index.html)
+[预览地址](https://syinho.github.io/Vue.js-Practice/实时时间转换指令v-time/index.html)
 - 主要是掌握Date对象的几个方法，诸如Date.parse(),Date.UTC(),Date.now(),Date(),getTime()等获取当前时间戳和任意时间的时间戳的方法
 *****
 开发一个自定义指令v-birthday,接收一个出生日期时间戳，将它转换为已出生XX天
+[预览地址](https://syinho.github.io/Vue.js-Practice/自定义指令v-birthday/index.html)
 *****
