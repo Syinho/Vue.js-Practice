@@ -49,3 +49,6 @@
 开发一个自定义指令v-birthday,接收一个出生日期时间戳，将它转换为已出生XX天
 [预览地址](https://syinho.github.io/Vue.js-Practice/自定义指令v-birthday/index.html)
 *****
+*****
+将出生了XXX天转为具体的XX年XX月XX日
+*****

@@ -12,13 +12,14 @@
     <div id="app">
         <input type="text" v-model.lazy="birthday">
         <p v-birthday="birthday"></p>
+        <p v-birthday.details="birthday"></p>
     </div>
     <script src="./birthday.js"></script>
     <script>
         const app = new Vue({
             el: '#app',
             data: {
-                birthday: '2000-1-1'
+                birthday: '1874-5/6日'
             }
         })
     </script>
