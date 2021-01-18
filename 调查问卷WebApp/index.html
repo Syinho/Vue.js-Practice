@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="../vue.js"></script>
+</head>
+
+<body>
+    <div id="app">
+        <div v-if="ready">
+            <i-card :label="page0.label" :page="page0.page" :copy-list="page0.copyList" v-show="this.currentPage == 0">
+                <btn :page-num="page0.page" :pages=3 @on-click="evAlys">
+                </btn>
+            </i-card>
+            <i-card :label="page1.label" :page="page1.page" :copy-list="page1.copyList" v-show="this.currentPage == 1">
+                <btn :page-num="page1.page" :pages=3 @on-click="evAlys">
+                </btn>
+            </i-card>
+            <i-card :label="page2.label" :page="page2.page" :copy-list="page2.copyList" v-show="this.currentPage == 2">
+                <btn :page-num="page2.page" :pages=3 @on-click="evAlys">
+                </btn>
+            </i-card>
+        </div>
+        <p v-else>您已完成问卷，感谢您的提交</p>
+    </div>
+    <script src="./iCard.js"></script>
+    <script src="./mybutton.js"></script>
+
+    <script>
+        const app = new Vue({
+            el: '#app',
+            data: {
+                page0: {
+                    label: '请问您的性别是',
+                    page: 0,
+                    copyList: [{
+                        type: 'radio',
+                        value: '男',
+                        checked: '',
+                        name: 'sex' // checked决定是否默认选中该选项，空字符串代表不选中，null代表选中
+                    }, {
+                        type: 'radio',
+                        value: '女',
+                        checked: '',
+                        name: 'sex'
+                    }]
+                },
+                page1: {
+                    label: '请问您的兴趣爱好',
+                    page: 1,
+                    copyList: [{
+                        type: 'checkbox',
+                        value: '看书',
+                        checked: '',
+                        name: 'hobby'
+                    }, {
+                        type: 'checkbox',
+                        value: '游泳',
+                        checked: '',
+                        name: 'hobby'
+                    }, {
+                        type: 'checkbox',
+                        value: '跑步',
+                        checked: '',
+                        name: 'hobby'
+                    }, {
+                        type: 'checkbox',
+                        value: '听音乐',
+                        checked: '',
+                        name: 'hobby'
+                    }, {
+                        type: 'checkbox',
+                        value: '看电影',
+                        checked: '',
+                        name: 'hobby'
+                    }]
+                },
+                page2: {
+                    label: '请介绍一下自己',
+                    page: 2,
+                    copyList: [{
+                        type: 'textarea',
+                        length: 100
+                        // 代表长度达到100才能提交
+                    }]
+                },
+                whichBtn: '',
+                currentPage: 0,
+                result: {
+                    radio: '',
+                    chkbox: [],
+                    ta: ''
+                },
+                ready: true
+            },
+            methods: {
+                evAlys(val, num) {
+                    switch (val) {
+                        case 'submit':
+                            this.whichBtn = 'submit';
+                            this.currentPage = 0;
+                            this.ready = false;
+                            break;
+                        case 'reset':
+                            this.whichBtn = 'reset';
+                            let com = this.getCardsByNum(num)[0];
+                            // console.log(com);
+                            for (let props in com.res) {
+                                // console.log(Object.prototype.toString.call(com.res[props]));
+                                // console.log(reg.test(Object.prototype.toString.call(com.res[props])));
+                                // console.log(com.res[props]);
+                                let reg = / (\w+)/g;
+                                if (reg.test(Object.prototype.toString.call(com.res[props]))) {
+                                    if (RegExp.$1 == 'String') {
+                                        console.log(`匹配字符串成功`);
+                                        com.res[props] = '';
+                                    } else if (RegExp.$1 == 'Array') {
+                                        console.log(`匹配数组成功`);
+                                        com.res[props] = [];
+                                    }
+                                }
+                            }
+                            break;
+                        case 'previous':
+                            this.whichBtn = 'previous';
+                            this.currentPage--;
+                            // this.getCardsByNum(num)[0].$children[0].ableBtn = [];
+                            break;
+                        case 'next':
+                            this.whichBtn = 'next';
+                            this.currentPage++;
+                            break;
+                    }
+                },
+                getCardsByNum(num) {
+                    let coms = this.$children.filter((item, index, arr) => {
+                        return item.$options.name == 'card';
+                    });
+                    // 获取所有 name为card 的子组件,此时有三个
+                    return coms.filter((item, index, arr) => {
+                        return item.pn == num;
+                    });
+                    // 返回一个组件中pn数据为num的card组件，它是一个数组，应该用[0]来获取
+                }
+            }
+        })
+    </script>
+</body>
+
+</html>
