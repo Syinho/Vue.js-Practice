@@ -59,4 +59,4 @@
 - 第三页：输入框（要求长度在100以上才能提交）
 - 其它要求：button要求设置为组件
 
-[预览地址](https://syinho.github.io/Vue.js-Practice/调查问卷webapp/index.html)
+[预览地址](https://syinho.github.io/Vue.js-Practice/调查问卷WebApp/index.html)
