@@ -6,7 +6,7 @@
 - 添加checkbox，只有选中的商品被纳入总价计算
 - 实现二维数组的读取（使用两次v-for），对购物车商品类别进行分类
 
-[预览地址](https://syinho.github.io/Vue.js-Practice/%E8%B4%AD%E7%89%A9%E8%BD%A6%E7%BB%83%E4%B9%A0/%E8%B4%AD%E7%89%A9%E8%BD%A6.html)
+[预览地址](https://donglei96.github.io/Vue.js-Practice/%E8%B4%AD%E7%89%A9%E8%BD%A6%E7%BB%83%E4%B9%A0/%E8%B4%AD%E7%89%A9%E8%BD%A6.html)
 
 ### 数字输入框组件练习
 - 组件由 数字输入框组件(input-number.js) 、入口页(index.html) 、根实例(index.js) 组成
@@ -19,7 +19,7 @@
   - `@keyup.up`与`@keyup.down`
 - 增加对输入框加减幅度的控制
 
-[预览地址](https://syinho.github.io/Vue.js-Practice/%E6%95%B0%E5%AD%97%E8%BE%93%E5%85%A5%E6%A1%86%E7%BB%84%E4%BB%B6/index.html)
+[预览地址](https://donglei96.github.io/Vue.js-Practice/%E6%95%B0%E5%AD%97%E8%BE%93%E5%85%A5%E6%A1%86%E7%BB%84%E4%BB%B6/index.html)
 
 ### 标签页练习
 - 一个《哆啦A梦》的人物形象查看页
@@ -28,11 +28,11 @@
 *****
 - 尝试在切换pane的显示与隐藏时，使用滑动的动画
 
-[预览地址](https://syinho.github.io/Vue.js-Practice/%E6%A0%87%E7%AD%BE%E9%A1%B5%E7%BB%83%E4%B9%A0/index.html)
+[预览地址](https://donglei96.github.io/Vue.js-Practice/%E6%A0%87%E7%AD%BE%E9%A1%B5%E7%BB%83%E4%B9%A0/index.html)
 
 ### 指令练习————开发一个点击外部区域可以令其隐藏的下拉菜单
 
-[预览地址](https://syinho.github.io/Vue.js-Practice/开发一个可从外部关闭的下拉菜单/index.html)
+[预览地址](https://donglei96.github.io/Vue.js-Practice/开发一个可从外部关闭的下拉菜单/index.html)
 *****
 - 扩展clickoutside.js，实现在点击按钮显示下拉菜单后，通过按下键盘的ESC键也可以关闭下拉菜单
 - 按下键盘触发`keydown`事件，若是一直按着会不停触发，通过防抖来处理(或者直接监听`keyup`事件？)。通过`e.keyCode`来判断是否是`ESC`,如果是的话就调用`binding.value`的值，即指令绑定的函数
@@ -43,11 +43,11 @@
   - 思路：指令钩子函数中的`binding`参数的`modifiers`属性可以获取指令修饰符对象，返回的是一个修饰符对象
 *****
 ### 实时时间转换指令
-[预览地址](https://syinho.github.io/Vue.js-Practice/实时时间转换指令v-time/index.html)
+[预览地址](https://donglei96.github.io/Vue.js-Practice/实时时间转换指令v-time/index.html)
 - 主要是掌握Date对象的几个方法，诸如Date.parse(),Date.UTC(),Date.now(),Date(),getTime()等获取当前时间戳和任意时间的时间戳的方法
 *****
 开发一个自定义指令v-birthday,接收一个出生日期时间戳，将它转换为已出生XX天
-[预览地址](https://syinho.github.io/Vue.js-Practice/自定义指令v-birthday/index.html)
+[预览地址](https://donglei96.github.io/Vue.js-Practice/自定义指令v-birthday/index.html)
 *****
 *****
 将出生了XXX天转为具体的XX年XX月XX日
@@ -59,4 +59,4 @@
 - 第三页：输入框（要求长度在100以上才能提交）
 - 其它要求：button要求设置为组件
 
-[预览地址](https://syinho.github.io/Vue.js-Practice/调查问卷WebApp/index.html)
+[预览地址](https://donglei96.github.io/Vue.js-Practice/调查问卷WebApp/index.html)
